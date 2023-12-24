@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'pages/home_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'CarParking/first.dart';
+import 'CarParking/second.dart';
+import 'CarParking/third.dart';
+import 'car drive/fill_car_details.dart';
+import 'food app/ui_page_forth.dart';
+import 'media_query/media_query.dart';
 
-void main() async {
-  // init the hive
-  await Hive.initFlutter();
-
-  // open a box
-  var box = await Hive.openBox('mybox');
-
+void main() {
   runApp(const MyApp());
 }
 
@@ -17,10 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-      theme: ThemeData(primarySwatch: Colors.yellow),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: FillCarDetailsScreen(),);
+      },
     );
   }
 }
