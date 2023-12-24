@@ -10,12 +10,13 @@ class MediaQueryScreen extends StatefulWidget {
 class _MediaQueryScreenState extends State<MediaQueryScreen> {
   @override
   Widget build(BuildContext context) {
-
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Media Query"),),
+      appBar: AppBar(
+        title: const Text("Media Query"),
+      ),
       body: Center(
         child: Container(
           height: h * 0.16,
@@ -33,4 +34,6 @@ class _MediaQueryScreenState extends State<MediaQueryScreen> {
       ),
     );
   }
+
+  /// Piyu is best Singer ...
 }
