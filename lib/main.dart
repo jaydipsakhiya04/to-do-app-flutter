@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:todoflutter/comman_widget/validation_textfield.dart';
 import 'CarParking/first.dart';
 import 'CarParking/second.dart';
 import 'CarParking/third.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: FillCarDetailsScreen(),);
+          home: ValidationScreen(),
+        );
       },
     );
   }

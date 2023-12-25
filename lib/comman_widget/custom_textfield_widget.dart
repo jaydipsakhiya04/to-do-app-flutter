@@ -5,9 +5,11 @@ class CustomTextField extends StatelessWidget {
   double? borderRadius;
   String? label;
   TextStyle? labelStyle;
+  TextEditingController? controller;
   double? borderWidth;
   bool isShowBorder = true;
   bool isShowFocusBorder = false;
+  String? Function(String?)? validator;
   Color? borderColor;
   Color? focusBorderColor;
   String? hintText;
@@ -19,7 +21,9 @@ class CustomTextField extends StatelessWidget {
       this.label,
       this.labelStyle,
       this.borderColor,
+      this.controller,
       this.focusBorderColor,
+      this.validator,
       this.hintText,
       this.borderWidth})
       : super(key: key);
@@ -34,7 +38,9 @@ class CustomTextField extends StatelessWidget {
           style: labelStyle ?? TextStyle(fontSize: 15.sp, color: Colors.grey),
         ),
         5.h.verticalSpace,
-        TextField(
+        TextFormField(
+          controller: controller,
+          validator: validator,
           decoration: InputDecoration(
             isDense: true,
             hintText: hintText,
