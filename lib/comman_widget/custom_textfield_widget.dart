@@ -7,16 +7,19 @@ class CustomTextField extends StatelessWidget {
   TextStyle? labelStyle;
   double? borderWidth;
   bool isShowBorder = true;
+  bool isShowFocusBorder = false;
   Color? borderColor;
+  Color? focusBorderColor;
   String? hintText;
 
   CustomTextField(
       {Key? key,
       this.borderRadius,
       required this.isShowBorder,
-        this.label,
-        this.labelStyle,
+      this.label,
+      this.labelStyle,
       this.borderColor,
+      this.focusBorderColor,
       this.hintText,
       this.borderWidth})
       : super(key: key);
@@ -32,10 +35,21 @@ class CustomTextField extends StatelessWidget {
         ),
         5.h.verticalSpace,
         TextField(
-
           decoration: InputDecoration(
             isDense: true,
             hintText: hintText,
+
+            /// It is used for when we touch on textfield its change color of the border
+            focusedBorder: isShowFocusBorder
+                ? null
+                : OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: focusBorderColor ?? Colors.blue,
+                        width: borderWidth ?? 1.w),
+                    borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
+                  ),
+
+            ///-------------
             border: isShowBorder
                 ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
