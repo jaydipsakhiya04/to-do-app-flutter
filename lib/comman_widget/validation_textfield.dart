@@ -40,9 +40,11 @@ class _ValidationScreenState extends State<ValidationScreen> {
               50.h.verticalSpace,
               ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (!_formKey.currentState!.validate()) {
                       Get.snackbar(
                           backgroundColor: Colors.red.shade400,
+                          margin: EdgeInsets.all(8),
+                          snackPosition: SnackPosition.BOTTOM,
                           "Hey",
                           "Please fill all field");
                     } else {
