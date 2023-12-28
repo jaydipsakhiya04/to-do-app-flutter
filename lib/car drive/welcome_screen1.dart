@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:todoflutter/car%20drive/fill_car_details.dart';
 
 class WelcomeFirst extends StatefulWidget {
   const WelcomeFirst({Key? key}) : super(key: key);
@@ -12,7 +13,6 @@ class WelcomeFirst extends StatefulWidget {
 }
 
 class _WelcomeFirstState extends State<WelcomeFirst> {
-
   int i = 0;
 
   @override
@@ -23,17 +23,27 @@ class _WelcomeFirstState extends State<WelcomeFirst> {
           100.h.verticalSpace,
           Image.asset('asset/images/carlogo.png'),
           100.h.verticalSpace,
-         /// Widget
-          i == 0 ? Screen1() : i == 1 ? Screen2() : Screen3(),
+
+          /// Widget
+          i == 0
+              ? Screen1()
+              : i == 1
+                  ? Screen2()
+                  : Screen3(),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton:  GestureDetector(
-        onTap: (){
-          i ++;
-          setState(() {
-
-          });
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          i++;
+          i == 3
+              ? Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FillCarDetailsScreen(),
+                  ))
+              : null;
+          setState(() {});
           // Get.to();
         },
         child: Container(
@@ -47,17 +57,23 @@ class _WelcomeFirstState extends State<WelcomeFirst> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Continue",style: TextStyle(color: Colors.white,fontSize: 20.sp),
+              Text(
+                "Continue",
+                style: TextStyle(color: Colors.white, fontSize: 20.sp),
               ),
               10.w.horizontalSpace,
-              Icon(Icons.arrow_forward,color: Colors.white,),
+              Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              ),
             ],
           ),
         ),
       ),
     );
   }
-  Widget Screen1(){
+
+  Widget Screen1() {
     return Column(
       children: [
         Padding(
@@ -66,14 +82,18 @@ class _WelcomeFirstState extends State<WelcomeFirst> {
             "Your no. 1 parking assistant lets make your car safe and feel good",
             softWrap: true,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400,),
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
         Image.asset('asset/images/carbackimage.png'),
       ],
     );
   }
-  Widget Screen2(){
+
+  Widget Screen2() {
     return Column(
       children: [
         Padding(
@@ -82,14 +102,18 @@ class _WelcomeFirstState extends State<WelcomeFirst> {
             "Your no. 1 parking assistant lets make your car safe and feel good",
             softWrap: true,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400,),
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
         Image.asset('asset/images/carpic.png'),
       ],
     );
   }
-  Widget Screen3(){
+
+  Widget Screen3() {
     return Column(
       children: [
         Padding(
@@ -98,7 +122,10 @@ class _WelcomeFirstState extends State<WelcomeFirst> {
             "Your no. 1 parking assistant lets make your car safe and feel good",
             softWrap: true,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400,),
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
         Image.asset('asset/images/carpicsecond.png'),
