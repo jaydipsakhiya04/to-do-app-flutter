@@ -12,11 +12,23 @@ class CustomTextField extends StatelessWidget {
   String? Function(String?)? validator;
   Color? borderColor;
   Color? focusBorderColor;
+  CrossAxisAlignment? crossAxisAlignment;
+
+  /// added ----------------------------------------------------
+  MainAxisAlignment? mainAxisAlignment;
+
+  /// added ----------------------------------------------------
   String? hintText;
 
   CustomTextField(
       {Key? key,
       this.borderRadius,
+      this.crossAxisAlignment,
+
+      /// added ----------------------------------------------------
+      this.mainAxisAlignment,
+
+      /// added ----------------------------------------------------
       required this.isShowBorder,
       this.label,
       this.labelStyle,
@@ -31,7 +43,12 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+
+      /// added ----------------------------------------------------
+      mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.end,
+
+      /// added ----------------------------------------------------
       children: [
         Text(
           label ?? "",
