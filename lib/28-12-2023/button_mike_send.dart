@@ -23,6 +23,7 @@ class _ButtonMikeSendState extends State<ButtonMikeSend> {
             child: TextField(
               onChanged: (value) {
                 textEditingController.text = value;
+                //
                 setState(() {});
               },
               decoration: InputDecoration(
