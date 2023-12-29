@@ -21,24 +21,14 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               children: [
                 Container(
-                  height: 200,
+                  height: 500,
                   margin: EdgeInsets.all(20),
                   color: Colors.red.shade300,
                 ),
                 Container(
-                  height: 200,
+                  height: 500,
                   margin: EdgeInsets.all(20),
                   color: Colors.yellow.shade300,
-                ),
-                Container(
-                  height: 200,
-                  margin: EdgeInsets.all(20),
-                  color: Colors.grey.shade300,
-                ),
-                Container(
-                  height: 200,
-                  margin: EdgeInsets.all(20),
-                  color: Colors.green.shade300,
                 ),
               ],
             ),
