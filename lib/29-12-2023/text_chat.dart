@@ -34,11 +34,12 @@ class _TextChatDemoState extends State<TextChatDemo> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      "dkfbkdflndkfnmd ldfknldfknldkfl kdlfkndlf dlfknldkfn kdlfknldkfnldkfknldkfnldkfklndlfknkldkldklfkn",
+                      "hy",
                       style: TextStyle(fontSize: 16.0),
                     ),
                     12.h.verticalSpace,
                     Row(
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text("Time"),
