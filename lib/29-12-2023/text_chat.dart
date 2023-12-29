@@ -13,7 +13,7 @@ class _TextChatDemoState extends State<TextChatDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Text"),
+        title: const Text("Text"),
       ),
       body: Column(
         children: [
@@ -22,17 +22,26 @@ class _TextChatDemoState extends State<TextChatDemo> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                width: 200,
-                color: Colors.green.shade300,
+                constraints: BoxConstraints(
+                  maxWidth: 0.8.sw,
+                  maxHeight: double.infinity,
+                ),
+                padding: EdgeInsets.all(10.r),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue),
+                ),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                        "isfbkdlfnkdklklhlkjhljljljjljlkjlkjlkjlhjlkhlkhkjhjkglklhlkjhljljljjljlkjlkjlkjlhjlkhlkhkjhjkghkjgkjkgkgkjgjkljjljlkjlkjlkjlhjlkhlkhkjhjkghkjgkjkgkgkjgjkjjflkndfbnd"),
-                    20.h.verticalSpace,
-                    const Row(
+                      "dkfbkdflndkfnmd ldfknldfknldkfl kdlfkndlf dlfknldkfn kdlfknldkfnldkfknldkfnldkfklndlfknkldkldklfkn",
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    12.h.verticalSpace,
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text("121212121"),
+                        Text("Time"),
                       ],
                     ),
                   ],
