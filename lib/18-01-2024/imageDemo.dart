@@ -11,22 +11,7 @@ class ImagePickerScreen extends StatefulWidget {
 }
 
 class _ImagePickerScreenState extends State<ImagePickerScreen> {
-  List<XFile> images = [];
-
-  Future<void> _pickImages() async {
-    final picker = ImagePicker();
-    final pickedFiles =
-        await picker.pickMultiImage(); // Set your desired maxImages limit
-
-    if (pickedFiles != null) {
-      setState(() {
-        images.addAll(pickedFiles);
-      });
-    }
-  }
-
-  TextEditingController nameController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
+  final ImageController imageController = Get.put(ImageController());
 
   @override
   Widget build(BuildContext context) {
@@ -34,76 +19,84 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
       appBar: AppBar(
         title: Text('Image Picker App'),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 16),
-          Expanded(
-            flex: 3,
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 16),
+            SizedBox(
+              height: 250,
+              child: Obx(
+                () => ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: imageController.images.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == imageController.images.length) {
+                      // Last index, show button
+                      return ElevatedButton(
+                        onPressed: imageController._pickImages,
+                        child: Text('Pick Images'),
+                      );
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Image.file(
+                          File(imageController.images[index].path),
+                          fit: BoxFit.cover,
+                        ),
+                      );
+                    }
+                  },
+                ),
               ),
-              itemCount: images.length + 1,
-              itemBuilder: (context, index) {
-                if (index == images.length) {
-                  // Last index, show button
-                  return ElevatedButton(
-                    onPressed: _pickImages,
-                    child: Text('Pick Images'),
-                  );
-                } else {
-                  return Image.file(
-                    File(images[index].path),
-                    fit: BoxFit.cover,
-                  );
-                }
-              },
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextField(
-                  controller: ageController,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      Get.to(Screen2(
-                        name: nameController.text,
-                        age: ageController.text,
-                        image: images.first,
-                      ));
-                    },
-                    child: Text("Next Page")),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  TextField(
+                    controller: imageController.nameController,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    )),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextField(
+                    controller: imageController.ageController,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    )),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Get.to(Screen2(
+                          name: imageController.nameController.text,
+                          age: imageController.ageController.text,
+                          image: imageController.images.first,
+                        ));
+                      },
+                      child: Text("Next Page")),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
+/// aa biji file ma screen banavi nakhje
+///
+///
+///
 class Screen2 extends StatelessWidget {
   final String name;
   final String age;
@@ -135,5 +128,26 @@ class Screen2 extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+/// AA Controller chhe Getx Nu
+///
+///
+///
+
+class ImageController extends GetxController {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+  RxList<XFile> images = <XFile>[].obs;
+
+  Future<void> _pickImages() async {
+    final picker = ImagePicker();
+    final pickedFiles =
+        await picker.pickMultiImage(); // Set your desired maxImages limit
+
+    if (pickedFiles != null) {
+      images.addAll(pickedFiles);
+    }
   }
 }
