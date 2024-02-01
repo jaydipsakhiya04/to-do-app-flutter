@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:todoflutter/01-02-2024/am_pm_demo.dart';
 import 'package:todoflutter/27-12-2023/button_piyu.dart';
 import 'package:todoflutter/29-12-2023/button_mike_send.dart';
 import 'package:todoflutter/28-12-2023/chat_demo.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ImagePickerScreen(),
+          home: TimeFormatDemoPiyu(),
         );
       },
     );
