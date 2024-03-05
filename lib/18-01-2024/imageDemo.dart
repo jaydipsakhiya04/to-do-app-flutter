@@ -35,7 +35,7 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
                       // Last index, show button
                       return ElevatedButton(
                         onPressed: imageController._pickImages,
-                        child: Text('Pick Images'),
+                        child: const Text('Pick Images'),
                       );
                     } else {
                       return Padding(
