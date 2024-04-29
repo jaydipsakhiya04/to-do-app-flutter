@@ -1,0 +1,17 @@
+{
+  "@@locale": "en",
+  "login": "Log in",
+  "forgotPassword": "Forgot password?",
+  "register": "Register",
+  "logInWithEmail": "Log in with email",
+  "logInWithMobile": "Log in with mobile",
+  "enterEmailAddress": "Enter email address",
+  "enterMobileNumber": "Enter mobile number",
+  "password": "Password",
+  "passwordValidationMsg": "Password must contain 6 - 16 character from: digit, letters, or sysmbols",
+  "readAndAgreeMsg": "I have read and agree to the ",
+  "appAgreement": "App Account User Agreement ",
+  "and": "and",
+  "privacyNotice": "Privacy Notice",
+  "signUp" : "Sign up"
+}
